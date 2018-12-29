@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Addin
+    id = "com.jsuarezruiz.colorhelper">
+    <Header>
+        <Name>Color Helper Addin</Name>
+        <Description>A new pad in Visual Studio for Mac that allow color conversions.</Description>
+        <Author>Javier Suárez</Author>
+        <Copyright>Javier Suárez</Copyright>
+        <Url>https://github.com/jsuarezruiz/VSMac-ColorHelper</Url>
+    </Header>       
+    <Extension 
+        path="/MonoDevelop/Ide/Commands">
+        <Command
+            _label="Color Blender" 
+             id="VS4Mac.ColorHelper.Commands.ColorBlenderCommand"
+             defaultHandler="VS4Mac.ColorHelper.Commands.ColorBlenderCommand"/>
+    </Extension>
+    <Extension
+        path = "/MonoDevelop/Ide/Pads">
+        <Pad
+            id = "ColorHelper.Pad.ColorConverterPad"
+            _label = "Color Converter"
+            class = "VS4Mac.ColorHelper.Views.ColorConverterPad"
+            defaultPlacement = "right" />
+    </Extension> 
+    <Extension 
+        path = "/MonoDevelop/Ide/MainMenu/Tools">
+        <CommandItem 
+            id="VS4Mac.ColorHelper.Commands.ColorBlenderCommand"/>
+    </Extension> 
+</Addin>
