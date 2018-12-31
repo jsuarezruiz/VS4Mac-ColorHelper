@@ -5,6 +5,8 @@
 * Convert color formats easily.
 * Color matching and palette design.
 
+![Color Helper](images/color-blender.gif)
+
 ## Copyright and license
 
 Code released under the [MIT license](https://opensource.org/licenses/MIT).
