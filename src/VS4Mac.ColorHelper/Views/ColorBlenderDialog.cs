@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ColorBlender;
 using VS4Mac.ColorHelper.Controls;
 using VS4Mac.ColorHelper.Extensions;
@@ -9,6 +10,9 @@ namespace VS4Mac.ColorHelper.Views
     public class ColorBlenderDialog : Dialog
     {
         VBox _mainBox;
+        HBox _headerBox;
+        Label _algorithmLabel;
+        ComboBox _algorithmCombo;
         HBox _swatchBox;
         SwatchWidget _swatch1;
         SwatchWidget _swatch2;
@@ -53,6 +57,7 @@ namespace VS4Mac.ColorHelper.Views
             BuildGui();
             AttachEvents();
 
+            UpdateAlgorithms();
             UpdateSwatches();
             UpdateSliderRGB();
             UpdateSliderHSV();
@@ -68,6 +73,14 @@ namespace VS4Mac.ColorHelper.Views
             {
                 HeightRequest = 600,
                 WidthRequest = 1200
+            };
+
+            _headerBox = new HBox();
+            _algorithmLabel = new Label("algorithm:");
+
+            _algorithmCombo = new ComboBox
+            {
+                WidthRequest = 250
             };
 
             _swatchBox = new HBox();
@@ -192,6 +205,9 @@ namespace VS4Mac.ColorHelper.Views
         {
             Title = "Color Blender";
 
+            _headerBox.PackEnd(_algorithmCombo);
+            _headerBox.PackEnd(_algorithmLabel);
+
             _swatchBox.PackEnd(_swatch1);
             _swatchBox.PackEnd(_swatch2);
             _swatchBox.PackEnd(_swatch3);
@@ -233,6 +249,7 @@ namespace VS4Mac.ColorHelper.Views
             _editHslBox.PackStart(_saturationBox);
             _editHslBox.PackStart(_lightnessBox);
 
+            _mainBox.PackStart(_headerBox);
             _mainBox.PackStart(_swatchBox);
             _mainBox.PackStart(_editRgbBox);
             _mainBox.PackStart(_editHslBox);
@@ -243,6 +260,8 @@ namespace VS4Mac.ColorHelper.Views
 
         void AttachEvents()
         {
+            _algorithmCombo.SelectionChanged += OnAlgorithmComboSelectionChanged;
+
             _redSlider.ValueChanged += OnSliderRGBValueChanged;
             _greenSlider.ValueChanged += OnSliderRGBValueChanged;
             _blueSlider.ValueChanged += OnSliderRGBValueChanged;
@@ -252,6 +271,12 @@ namespace VS4Mac.ColorHelper.Views
             _lightnessSlider.ValueChanged += OnSlideHSVValueChanged;
         }
 
+        void OnAlgorithmComboSelectionChanged(object sender, EventArgs e)
+        {
+            var selectedIndex = _algorithmCombo.SelectedIndex;
+            ColorMatch.CurrentAlgorithm = ColorMatch.Algorithms[selectedIndex];
+            ColorMatch.Update();
+        }
 
         void OnSliderRGBValueChanged(object sender, EventArgs args)
         {
@@ -292,6 +317,28 @@ namespace VS4Mac.ColorHelper.Views
 
             UpdateSwatches();
             UpdateSliderRGB();
+        }
+
+        void UpdateAlgorithms()
+        {
+            List<string> algorithms = new List<string> 
+            {
+                "Classic",
+                "ColorExplorer",
+                "SingleHue",
+                "Complementary",
+                "SplitComplementary",
+                "Analogue",
+                "Triadic",
+                "Square"
+            };
+
+            foreach (var algorithm in algorithms)
+            {
+                _algorithmCombo.Items.Add(algorithm);
+            }
+
+            _algorithmCombo.SelectedIndex = 0;
         }
 
         void UpdateSwatches()
