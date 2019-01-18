@@ -3,9 +3,9 @@
     id = "com.jsuarezruiz.colorhelper">
     <Header>
         <Name>Color Helper Addin</Name>
-        <Description>A new pad in Visual Studio for Mac that allow color conversions.</Description>
-        <Author>Javier Suárez</Author>
-        <Copyright>Javier Suárez</Copyright>
+        <Description>Color Helper is a Visual Studio for macOS addin to add some color helper tools.</Description>
+        <Author>Javier Suárez Ruiz</Author>
+        <Copyright>Javier Suárez Ruiz</Copyright>
         <Url>https://github.com/jsuarezruiz/VSMac-ColorHelper</Url>
     </Header>       
     <Extension 
