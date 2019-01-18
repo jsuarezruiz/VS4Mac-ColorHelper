@@ -1,13 +1,20 @@
-﻿using Mono.Addins;
+﻿using System;
+using System.Runtime.InteropServices;
+using Mono.Addins;
 using Mono.Addins.Description;
 
 [assembly: Addin(
     "VS4Mac.ColorHelper",
     Namespace = "VS4Mac.ColorHelper",
-    Version = "0.1"
+    Version = "0.1",
+    Category = "IDE extensions"
 )]
 
-[assembly: AddinName("VS4Mac.ColorHelper")]
+[assembly: AddinName("Color Helper")]
 [assembly: AddinCategory("IDE extensions")]
-[assembly: AddinDescription("VS4Mac.ColorHelper")]
+[assembly: AddinDescription("Color Helper is a Visual Studio for macOS addin to add some color helper tools.")]
 [assembly: AddinAuthor("Javier Suárez Ruiz")]
+[assembly: AddinUrl("https://github.com/jsuarezruiz/VS4Mac-ColorHelper")]
+
+[assembly: CLSCompliant(false)]
+[assembly: ComVisible(false)]
