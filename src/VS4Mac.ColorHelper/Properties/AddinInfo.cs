@@ -4,8 +4,8 @@ using Mono.Addins;
 using Mono.Addins.Description;
 
 [assembly: Addin(
-    "VS4Mac.ColorHelper",
-    Namespace = "VS4Mac.ColorHelper",
+    "ColorHelper",
+    Namespace = "MonoDevelop",
     Version = "0.1",
     Category = "IDE extensions"
 )]

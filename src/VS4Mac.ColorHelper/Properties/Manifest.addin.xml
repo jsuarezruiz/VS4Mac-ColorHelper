@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Addin
-    id = "com.jsuarezruiz.colorhelper">
+    id = "MonoDevelop.ColorHelper">
     <Header>
         <Name>Color Helper Addin</Name>
         <Description>Color Helper is a Visual Studio for macOS addin to add some color helper tools.</Description>
